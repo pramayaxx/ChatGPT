@@ -1,324 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Showcase</title>
+    <meta name="description" content="Documentation of GPT-based API with multiple models.">
+    <title>ChatGPT API Documentation</title>
     <style>
-        /* Global styles */
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: 'Roboto', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
 
-        /* Header styles */
-        header {
-            background-color: #1f1f1f;
-            padding: 15px 20px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ff4081;
-            border-bottom: 2px solid #ff4081;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        body {
+            scroll-behavior: smooth;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
 
-        /* Main content */
-        main {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        /* Section styles */
-        section {
-            margin-bottom: 40px;
-            background-color: #1d1d1d;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Section headers */
-        h2 {
-            color: #ff4081;
-            border-bottom: 2px solid #ff4081;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        /* Paragraph styles */
-        p {
-            margin: 10px 0;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* Link styles */
-        a {
-            color: #64ffda;
-            text-decoration: none;
-            word-break: break-all;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        a:hover {
-            text-decoration: underline;
-            color: #ff4081;
-            text-shadow: 0 0 5px #ff4081;
-        }
-
-        /* Footer styles */
-        footer {
-            background-color: #1f1f1f;
-            text-align: center;
-            padding: 15px;
-            position: fixed;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
             width: 100%;
-            bottom: 0;
-            font-size: 0.9rem;
-            color: #9e9e9e;
-            border-top: 1px solid #333;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            padding: 50px 20px;
+            text-align: center;
+            color: white;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: slideInDown 1.5s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: slideInUp 1.5s ease forwards;
+        }
+
+        /* Documentation Section */
+        .section {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* API Endpoints */
+        .api-endpoints {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .api-endpoint {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .api-endpoint h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .api-endpoint pre {
+            background-color: #333;
+            color: #e74c3c;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .api-endpoint code {
+            color: #e74c3c;
+        }
+
+        /* Scrollable Model Container */
+        .scrollable-container {
+            height: 200px; /* Medium height for scrollable container */
+            overflow-y: auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .scrollable-container ul {
+            list-style: none;
+        }
+
+        .scrollable-container li {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
         }
 
         /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
                 transform: translateY(0);
+                opacity: 1;
             }
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            header {
-                font-size: 1.2rem;
-                padding: 10px;
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
             }
-
-            p {
-                font-size: 0.9rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            footer {
-                padding: 10px;
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            main {
-                padding: 10px;
-            }
-
-            section {
-                padding: 15px;
-            }
-
-            h2 {
-                font-size: 1.3rem;
-            }
-
-            p {
-                font-size: 0.85rem;
+            to {
+                transform: translateY(0);
+                opacity: 1;
             }
         }
     </style>
 </head>
-
 <body>
-    <header>
-        <h1>Some Free APIs From Me</h1>
-    </header>
 
-    <main>
-        <!-- Video Downloader APIs -->
-        <section>
-            <h2>Video Downloader APIs ⚡</h2>
-            <p><strong>Terabox Video Downloader API:</strong> 
-                <a href="https://ashlynn.serv00.net/Ashlynnterabox.php/?url=">https://ashlynn.serv00.net/Ashlynnterabox.php/?url= Your TeraBox video URL here</a>
-            </p>
-            <p><strong>Terabox Video Downloader API 2:</strong> 
-                <a href="https://teraboxapi2.darkhacker7301.workers.dev/?url=">https://teraboxapi2.darkhacker7301.workers.dev/?url= Your TeraBox video URL here</a>
-            </p>
-            <p><strong>Facebook Video Downloader API:</strong> 
-                <a href="https://ashlynn.serv00.net/fb.php/?url=">https://ashlynn.serv00.net/fb.php/?url= your Facebook video URL here</a>
-            </p>
-            <p><strong>Instagram Video Downloader API:</strong> 
-                <a href="https://ashlynn.serv00.net/ashlynnInsta.php/?url=">https://ashlynn.serv00.net/ashlynnInsta.php/?url= Your video URL here</a>
-                <br>Or<br>
-                <a href="https://ashlynn.serv00.net/insta.php/?q=">https://ashlynn.serv00.net/insta.php/?q= Your video URL here</a>
-            </p>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>ChatGPT API by Ashlynn Repository</h1>
+        <p>Explore all GPT models and use them with our easy-to-use API.</p>
+    </section>
 
-        <!-- Bank Details Finder API -->
-        <section>
-            <h2>Bank Details Finder API</h2>
-            <p><strong>Bank Details via IFSC Code:</strong> 
-                <a href="https://ashlynn.serv00.net/bank-details.php/?ifsc=">https://ashlynn.serv00.net/bank-details.php/?ifsc= IFSC CODE HERE</a>
-            </p>
-        </section>
+    <!-- Documentation Section -->
+    <section class="section">
+        <h2>Available API Endpoints</h2>
+        <div class="api-endpoints">
+            <div class="api-endpoint">
+                <h3>GET Request</h3>
+                <p>Query a question with a selected model.</p>
+                <pre><code>GET https://chatgpt.ashlynn.workers.dev/?question=Hello&model=gpt-4</code></pre>
+            </div>
 
-        <!-- ChatGPT APIs -->
-        <section>
-            <h2>ChatGPT APIs ⚡</h2>
-            <p><strong>ChatGPT API 1:</strong> 
-                <a href="https://ashlynn.serv00.net/ashlynngptapi.php/?question=">https://ashlynn.serv00.net/ashlynngptapi.php/?question= your question here</a>
-            </p>
-            <p><strong>ChatGPT API 2:</strong> 
-                <a href="https://chatgpt.darkhacker7301.workers.dev/?question=">https://chatgpt.darkhacker7301.workers.dev/?question= your question here</a>
-            </p>
-            <p><strong>Ai Girlfriend API:</strong> 
-                <a href="https://chatgpt.darkhacker7301.workers.dev/?question=hey&state=girlfriend">https://chatgpt.darkhacker7301.workers.dev/?question=hey&state=girlfriend</a>
-            </p>
-            <p><strong>Jarvis API:</strong> 
-                <a href="https://jarvis.darkhacker7301.workers.dev/?question=hey&state=jarvis">https://jarvis.darkhacker7301.workers.dev/?question=hey&state=jarvis</a>
-            </p>
-            <p><strong>Zenith AI API (Custom):</strong> 
-                <a href="https://ashlynn.darkhacker7301.workers.dev/?question=hey&state=Zenith">https://ashlynn.darkhacker7301.workers.dev/?question=hey&state=Zenith</a>
-            </p>
-        </section>
+            <div class="api-endpoint">
+                <h3>GET /gpt-3.5-turbo</h3>
+                <p>Query using the GPT-3.5 turbo model.</p>
+                <pre><code>GET https://chatgpt.ashlynn.workers.dev/?question=What+is+AI?&model=gpt-3.5-turbo</code></pre>
+            </div>
 
-        <!-- Image & Wallpaper APIs -->
-        <section>
-            <h2>Image & Wallpaper APIs ✨</h2>
-            <p><strong>Image Generator API:</strong> 
-                <a href="https://magicimage.darkhacker7301.workers.dev/?search=">https://magicimage.darkhacker7301.workers.dev/?search= Your prompt or text</a>
-            </p>
-            <p><strong>AI Image Generator (Advanced):</strong> 
-                <a href="https://death-image.ashlynn.workers.dev/?prompt=&image=&dimensions=&safety=">https://death-image.ashlynn.workers.dev/?prompt=YourPrompt&image=3&dimensions=tall&safety=true</a>
+        </div>
+    </section>
+
+    <!-- Scrollable Models Section -->
+    <section class="section">
+        <h2>Supported Models</h2>
+        <div class="scrollable-container">
             <ul>
-                <li><strong>Parameters:</strong></li>
-                <ul>
-                    <li><strong>prompt:</strong> Prompt to generate image</li>
-                    <li><strong>imageCount:</strong> Number of images (Max: 3)</li>
-                    <li><strong>safety:</strong> true or false (for NSFW content)</li>
-                    <li><strong>dimensions:</strong> tall, wide, or square</li>
-                </ul>
+                <li>gpt-4</li>
+                <li>gpt-4-0613</li>
+                <li>gpt-4-32k</li>
+                <li>gpt-4-0314</li>
+                <li>gpt-4-32k-0314</li>
+                <li>gpt-3.5-turbo</li>
+                <li>gpt-3.5-turbo-16k</li>
+                <li>gpt-3.5-turbo-0613</li>
+                <li>gpt-3.5-turbo-16k-0613</li>
+                <li>gpt-3.5-turbo-0301</li>
+                <li>text-davinci-003</li>
+                <li>text-davinci-002</li>
+                <li>code-davinci-002</li>
+                <li>gpt-3</li>
+                <li>text-curie-001</li>
+                <li>text-babbage-001</li>
+                <li>text-ada-001</li>
+                <li>davinci</li>
+                <li>curie</li>
+                <li>babbage</li>
+                <li>ada</li>
+                <li>babbage-002</li>
+                <li>davinci-002</li>
+                <li>chatgpt</li>
+                <li>gpt-4o</li>
             </ul>
-            </p>
-            <p><strong>Male Anime Wallpapers API:</strong> 
-                <a href="https://ashlynn.serv00.net/husbando.php">https://ashlynn.serv00.net/husbando.php</a>
-            </p>
-        </section>
+        </div>
+    </section>
 
-        <!-- Other APIs -->
-        <section>
-            <h2>Other APIs ⚡</h2>
-            <p><strong>Dynamic QR API:</strong> 
-                <a href="https://dynamicqr.darkhacker7301.workers.dev/?message=">https://dynamicqr.darkhacker7301.workers.dev/?message= Your Text Here</a>
-            </p>
-            <p><strong>Fake CC Generator API:</strong> 
-                <a href="https://ashlynn.serv00.net/cc.php">https://ashlynn.serv00.net/cc.php</a>
-            </p>
-            <p><strong>Wallpaper API:</strong> 
-                <a href="https://ashlynn.serv00.net/wall.php">https://ashlynn.serv00.net/wall.php</a>
-            </p>
-            <p><strong>Fact Generator API:</strong> 
-                <a href="https://ashlynn.serv00.net/fact.php">https://ashlynn.serv00.net/fact.php</a>
-            </p>
-            <p><strong>Joke Generator API:</strong> 
-                <a href="https://ashlynn.serv00.net/joke.php">https://ashlynn.serv00.net/joke.php</a>
-            </p>
-            <p><strong>Affirmation Generator API:</strong> 
-                <a href="https://ashlynn.serv00.net/affirmation.php">https://ashlynn.serv00.net/affirmation.php</a>
-            </p>
-            <p><strong>Riddle Generator API:</strong> 
-                <a href="https://ashlynn.serv00.net/riddle.php">https://ashlynn.serv00.net/riddle.php</a>
-            </p>
-            <p><strong>Tados API:</strong> 
-                <a href="https://ashlynn.serv00.net/tados.php">https://ashlynn.serv00.net/tados.php</a>
-            </p>
-            <p><strong>Random User API:</strong> 
-                <a href="https://ashlynn.serv00.net/randomuser.php">https://ashlynn.serv00.net/randomuser.php</a>
-            </p>
-            <p><strong>People Never Exist API:</strong> 
-                <a href="https://ashlynn.serv00.net/peopleneverexist.php">https://ashlynn.serv00.net/peopleneverexist.php</a>
-            </p>
-        </section>
-        
-        <!-- Additional APIs -->
-        <section>
-            <h2>Additional APIs 🚀</h2>
-            <p><strong>AI Search API:</strong> 
-                <a href="https://ai-search.ashlynn.workers.dev/?query=">https://ai-search.ashlynn.workers.dev/?query= your Query Here</a>
-            </p>
-            <p><strong>Advanced ChatGPT API (without ChatGPT Mode):</strong> 
-                <a href="https://lord.ashlynn.workers.dev/?question=&state=">https://lord.ashlynn.workers.dev/?question=YourQuestion&state=Stylist</a>
-                <ul>
-                    <li><strong>Available States/Modes:</strong></li>
-                    <ul>
-                        <li>Stylist</li>
-                        <li>Chef</li>
-                        <li>Prompt</li>
-                        <li>Mental</li>
-                        <li>Poet</li>
-                        <li>Doctor</li>
-                        <li>Generator</li>
-                    </ul>
-                </ul>
-            </p>
-            <p><strong>AI Image Generator:</strong> 
-                <a href="https://image.darkhacker7301.workers.dev/?prompt=&image=">https://image.darkhacker7301.workers.dev/?prompt=YourPrompt&image=3</a>
-                <ul>
-                    <li><strong>Parameters:</strong></li>
-                    <ul>
-                        <li><strong>prompt:</strong> Text prompt to generate the image</li>
-                        <li><strong>image:</strong> Number of images (Max: 3)</li>
-                    </ul>
-                </ul>
-            </p>
-            <p><strong>EvilGPT API:</strong> 
-                <a href="https://white-evilgpt.ashlynn.workers.dev/?username=&question=">https://white-evilgpt.ashlynn.workers.dev/?username=YourTGUsername&question=YourQuestion</a>
-            </p>
-            <p><strong>BB | TPY AI Helper API:</strong> 
-                <a href="https://bjs-tbc.ashlynn.workers.dev/?username=&question=">https://bjs-tbc.ashlynn.workers.dev/?username=YourTGId&question=hey</a>, 
-                <a href="https://bb-ai.ashlynn.workers.dev/?question=&state=">https://bb-ai.ashlynn.workers.dev/?question=hi&state=helper</a>
-            </p>
-            <p><strong>Query-Based AI API:</strong> 
-                <a href="https://lord-apis.ashlynn.workers.dev/?question=&mode=">https://lord-apis.ashlynn.workers.dev/?question=YourQuestion&mode=Bing</a>
-                <ul>
-                    <li><strong>Available Modes:</strong></li>
-                    <ul>
-                        <li>Bing</li>
-                        <li>Blackbox</li>
-                        <li>Llama</li>
-                        <li>Qwen</li>
-                        <li>Gemini</li>
-                    </ul>
-                </ul>
-            </p>
-        </section>
-    </main>
-
+    <!-- Footer -->
     <footer>
-        &copy; 2024 API Showcase | Made with 💻 by Aarabh
+        <p>Created by <a href="https://t.me/Ashlynn_Repository" style="color: #e74c3c;">Ashlynn Repository</a></p>
     </footer>
-</body>
 
+</body>
 </html>
