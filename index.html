@@ -5,166 +5,204 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Documentation of GPT-based API with multiple models.">
     <title>ChatGPT API Documentation</title>
+    <link rel="icon" href="https://iili.io/2Kb8u6u.md.png" type="image/x-icon">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            scroll-behavior: smooth;
-            background-color: #f4f4f4;
-            color: #333;
+            background: linear-gradient(135deg, #000000, #1c1c1e);
+            color: #e5e5e5;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(to right, #1e3c72, #2a5298);
+            background: linear-gradient(to right, #e50914, #b81d24);
             width: 100%;
-            padding: 50px 20px;
+            padding: 40px 20px;
             text-align: center;
             color: white;
-            animation: fadeIn 1.5s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             opacity: 0;
-            animation: slideInDown 1.5s ease forwards;
+            animation: slideInDown 1s ease forwards;
         }
 
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            font-size: 1.1rem;
             opacity: 0;
-            animation: slideInUp 1.5s ease forwards;
+            animation: slideInUp 1s ease forwards;
+            margin-top: 5px;
         }
 
         /* Documentation Section */
         .section {
             width: 90%;
-            max-width: 800px;
-            margin: 40px auto;
-            background-color: white;
-            padding: 20px;
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: #1f1f1f;
+            padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            color: #ddd;
+            animation: fadeIn 0.8s ease-in-out;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
         }
 
         .section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #e50914;
+            border-bottom: 2px solid #e50914;
+            padding-bottom: 8px;
+            text-align: center;
         }
 
-        /* API Endpoints */
         .api-endpoints {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 20px;
         }
 
         .api-endpoint {
-            background-color: #f9f9f9;
+            background-color: #2a2a2e;
             padding: 20px;
             border-radius: 10px;
-            width: 100%;
-            max-width: 600px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .api-endpoint:hover {
+            transform: translateY(-5px);
+            background-color: #3a3a3e;
         }
 
         .api-endpoint h3 {
-            color: #333;
+            color: #e50914;
             margin-bottom: 10px;
         }
 
         .api-endpoint pre {
-            background-color: #333;
-            color: #e74c3c;
-            padding: 10px;
+            background-color: #000;
+            color: #32cd32;
+            padding: 15px;
             border-radius: 5px;
             overflow-x: auto;
+            margin-top: 10px;
         }
 
-        .api-endpoint code {
-            color: #e74c3c;
-        }
-
-        /* Scrollable Model Container */
+        /* Scrollable Container */
         .scrollable-container {
-            height: 200px; /* Medium height for scrollable container */
+            height: 200px;
             overflow-y: auto;
-            background-color: #f9f9f9;
-            padding: 20px;
+            background-color: #2a2a2e;
+            padding: 15px;
             border-radius: 10px;
-            margin: 20px auto;
+            margin: 15px auto;
             width: 100%;
-            max-width: 600px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .scrollable-container ul {
             list-style: none;
+            color: #e5e5e5;
         }
 
         .scrollable-container li {
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin: 10px 0;
+            padding: 5px 0;
+            transition: color 0.2s ease;
+        }
+
+        .scrollable-container li:hover {
+            color: #e50914;
+            cursor: pointer;
         }
 
         /* Footer */
         footer {
-            margin-top: 40px;
+            margin-top: 30px;
             text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
+            padding: 15px;
+            background-color: #1a1a1d;
+            color: #e5e5e5;
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        footer a {
+            color: #e50914;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: #ff4040;
+            text-decoration: underline;
         }
 
         /* Animations */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes slideInDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         @keyframes slideInUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
             }
-            to {
-                transform: translateY(0);
-                opacity: 1;
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .api-endpoint pre {
+                font-size: 0.85rem;
+            }
+
+            .scrollable-container {
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
-
     <!-- Hero Section -->
     <section class="hero">
         <h1>ChatGPT API by Ashlynn Repository</h1>
@@ -177,22 +215,19 @@
         <div class="api-endpoints">
             <div class="api-endpoint">
                 <h3>GET Request</h3>
-                <p>Query a question with a Default GPT-4</p>
+                <p>Query a question with Default GPT-4</p>
                 <pre><code>GET https://chatgpt.ashlynn.workers.dev/?question=Hello</code></pre>
             </div>
-
             <div class="api-endpoint">
-                <h3>GET Request</h3>
-                <p>GPT-4.0 with real timedata.</p>
-                <pre><code>GET https://chatgpt.ashlynn.workers.dev/gptweb/?question=today%27s%20date%20and%20time%20in%20new%20delhi%20India</code></pre>
+                <h3>GET Request with Real-Time Data</h3>
+                <p>GPT-4 with real-time data from the web</p>
+                <pre><code>GET https://chatgpt.ashlynn.workers.dev/gptweb/?question=today's+date+and+time+in+New+Delhi+India</code></pre>
             </div>
-
             <div class="api-endpoint">
                 <h3>GET /gpt-3.5-turbo</h3>
-                <p>Query using the GPT-3.5 turbo model.</p>
+                <p>Query using the GPT-3.5 Turbo model.</p>
                 <pre><code>GET https://chatgpt.ashlynn.workers.dev/?question=What+is+AI?&model=gpt-3.5-turbo</code></pre>
             </div>
-
         </div>
     </section>
 
@@ -232,8 +267,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Created by <a href="https://t.me/Ashlynn_Repository" style="color: #e74c3c;">Ashlynn Repository</a></p>
+        <p>Created by <a href="https://t.me/Ashlynn_Repository">Ashlynn Repository</a></p>
     </footer>
-
 </body>
 </html>
