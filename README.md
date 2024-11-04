@@ -1,73 +1,17 @@
-## Some Free Apis From Me
+## ChatGPT Cloudflare Bot Code and HTML Web Codes 
 
-Video Downloader APIs ⚡
+# To deploy ChatGPT Web, follow these steps:
 
+1 Fork the Repository: Start by forking the repository to your GitHub account.
 
-Terabox Video Downloader api
- - https://ashlynn.serv00.net/Ashlynnterabox.php/?url= Your TeraBox video URL here
+2 Customize the Code: Modify the code in your fork to fit your requirements. 
 
-- https://teraboxapi2.darkhacker7301.workers.dev/?url= Your TeraBox video URL here
+3 Access Settings for Deployment:
 
-Facebook video Downloader api 
-- https://ashlynn.serv00.net/fb.php/?url= your Facebook video URL here
+  Go to your forked repository on GitHub.
 
-Instagram Video Downloader api 
-- https://ashlynn.serv00.net/ashlynnInsta.php/?q= your video URL here
+  Navigate to Settings > Pages.
 
-Bank Details finder via IFSC code Api
-- https://ashlynn.serv00.net/bank-details.php/?ifsc= IFSC CODE HERE
+  Under Source, select the branch you want to deploy (e.g., main or master) and choose the /root directory or relevant folder.
 
-Now some ChatGPT APIs ⚡
-
-1 https://ashlynn.serv00.net/ashlynngptapi.php/?question= your question here
-
-2 https://chatgpt.darkhacker7301.workers.dev/?question= your question here
-
-Ai Girlfriend api 🌝
-- https://chatgpt.darkhacker7301.workers.dev/?question=hey&state=girlfriend
-
-Jarvis api like iron man movies 
-- https://jarvis.darkhacker7301.workers.dev/?question=hey&state=jarvis
-
-Zenith Ai api (custom)
-https://ashlynn.darkhacker7301.workers.dev/?question=hey&state=Zenith
-
-Image Generator Api ✨
-https://magicimage.darkhacker7301.workers.dev/?search= Your prompt or text
- 
-Anime wallpaper Api ✨
-
-Male anime wallpapers api
-https://ashlynn.serv00.net/husbando.php
-
-Dyanmic QR Api ⚡
-https://dynamicqr.darkhacker7301.workers.dev/?message= Your Text Here
-
-Now some other APIs ⚡ 
-
-Fake CC Generate api 
-https://ashlynn.serv00.net/cc.php
-
-Wallpaper Api 
-https://ashlynn.serv00.net/wall.php
-
-Fact Generator Api 
-https://ashlynn.serv00.net/fact.php
-
-Joke Generator Api 
-https://ashlynn.serv00.net/joke.php
-
-Affirmation Generator Api 
-https://ashlynn.serv00.net/affirmation.php
-
-Riddle Generator Api 
-https://ashlynn.serv00.net/riddle.php
-
-Tados Api
-https://ashlynn.serv00.net/tados.php
-
-Random user Api 
-https://ashlynn.serv00.net/randomuser.php
-
-People never exist api
- https://ashlynn.serv00.net/peopleneverexist.php
+4 Deploy: Save the settings, and GitHub Pages will automatically deploy your project. You can access it via the provided GitHub Pages URL.
