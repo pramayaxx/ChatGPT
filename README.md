@@ -56,7 +56,6 @@ Replace `SECRET` with a secure, unique string to protect your webhook.
 - `/unRegisterWebhook`: Unregisters the bot's webhook.
 
 ## Credits
-Made by [Ashlynn Repository](https://t.me/Ashlynn_Repository)
 
 If you find this project useful, please consider giving it a ⭐ on GitHub! Your support helps improve and maintain this repository. Forking the repo is also encouraged – feel free to customize and enhance the code to fit your own needs.
 
